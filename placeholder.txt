@@ -5,3 +5,4 @@ Implement dining calendar with weekly meal schedule
 Enhance dining calendar design and add brown weekday headers
 Add campus events calendar with color-coded categories
 Fix events calendar display and random event generation logic
+Add weather calendar with monthly view and styled layout

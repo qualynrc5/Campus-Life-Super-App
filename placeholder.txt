@@ -2,3 +2,4 @@ Initial commit: Setup project structure with HTML, CSS, JS
 Initial commit: Setup base project structure with HTML, CSS, and JS
 Add homepage layout and navigation bar for Campus Life Super App
 Implement dining calendar with weekly meal schedule
+Enhance dining calendar design and add brown weekday headers

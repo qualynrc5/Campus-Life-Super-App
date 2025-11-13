@@ -6,3 +6,4 @@ Enhance dining calendar design and add brown weekday headers
 Add campus events calendar with color-coded categories
 Fix events calendar display and random event generation logic
 Add weather calendar with monthly view and styled layout
+Add Lourdes University logo to homepage and improve header

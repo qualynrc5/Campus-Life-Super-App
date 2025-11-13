@@ -1,1 +1,2 @@
 Initial commit: Setup project structure with HTML, CSS, JS
+Initial commit: Setup base project structure with HTML, CSS, and JS

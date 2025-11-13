@@ -8,3 +8,4 @@ Fix events calendar display and random event generation logic
 Add weather calendar with monthly view and styled layout
 Add Lourdes University logo to homepage and improve header
 Enhance site theme with orange, brown, yellow, and red color palette
+Update README with project overview, features, and setup instructions

@@ -1,5 +1,4 @@
-Campus Super App
-Project Description and Purpose
+Campus Super App Project Description and Purpose
 
 Campus Life Super App is a student-focused web application that centralizes key campus resources — including events, dining hall menus, and interactive maps — into one accessible hub.
 
@@ -10,7 +9,6 @@ Simplify campus navigation
 Improve student engagement
 
 Provide a one-stop platform for all campus information
-_________________________________________________
 
 Technologies Used
 
@@ -35,9 +33,8 @@ Google Maps Embed API (for campus overview map)
 Other Tools:
 
 Local Storage (for testing data persistence)
-_________________________________________________
-Feature List 
-Campus Map
+
+Feature List Campus Map
 
 Displays Lourdes University’s location and nearby buildings.
 
@@ -56,8 +53,8 @@ Displays daily breakfast and lunch menus in a colorful monthly calendar.
 Dining Menus
 
 Browse dining hall menus with images, descriptions, and daily specials.
-_________________________________________________
-Future Improvements 
+
+Future Improvements
 
 Add individualized maps for specific campus locations
 
@@ -76,3 +73,43 @@ Make the layout fully responsive on mobile and tablet devices
 Implement push notifications for upcoming events
 
 Add a site-wide search feature
+
+About
+No description, website, or topics provided.
+Resources
+ Readme
+ Activity
+Stars
+ 0 stars
+Watchers
+ 0 watching
+Forks
+ 0 forks
+Releases
+No releases published
+Create a new release
+Packages
+No packages published
+Publish your first package
+Languages
+HTML
+49.0%
+ 
+JavaScript
+28.1%
+ 
+CSS
+22.9%
+Suggested workflows
+Based on your tech stack
+Publish Node.js Package to GitHub Packages logo
+Publish Node.js Package to GitHub Packages
+Publishes a Node.js package to GitHub Packages.
+Publish Node.js Package logo
+Publish Node.js Package
+Publishes a Node.js package to npm.
+Datadog Synthetics logo
+Datadog Synthetics
+Run Datadog Synthetic tests within your GitHub Actions workflow
+More workflows
+Footer

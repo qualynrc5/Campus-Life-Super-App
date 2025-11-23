@@ -11,48 +11,35 @@
 </head>
 
 <body>
-  <!-- ========== HEADER / NAVIGATION ========== -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Main Navigation">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Campus Life</a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="dining.html" aria-current="page">Dining</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-            <li class="nav-item"><a class="nav-link" href="map.html">Campus Map</a></li>
-            <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- ========== MAIN CONTENT ========== -->
+  <!-- Main content -->
   <main class="container mt-5 pt-5">
     <h1 class="text-center mb-4">🍳 Dining Hall Calendar - November</h1>
-
-    <!-- Accessible calendar grid -->
-    <section aria-label="Dining Hall Weekly Menu">
-      <div id="dining-calendar" class="calendar-grid" role="grid"></div>
-    </section>
+    <div id="dining-calendar" class="calendar-grid"></div>
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- Footer -->
   <footer class="text-center py-3 mt-5">
     <small>&copy; 2025 Lourdes University | Dining</small>
   </footer>
 
   <!-- JS -->
   <script src="js/script.js"></script>
+
+  <!-- Navbar loader -->
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.body.insertAdjacentHTML("afterbegin", html);
+
+        const current = location.pathname.split("/").pop();
+        document.querySelectorAll(".nav-link").forEach(link => {
+          if (link.getAttribute("href") === current) {
+            link.classList.add("active");
+          }
+        });
+      });
+  </script>
 </body>
 </html>
 

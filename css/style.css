@@ -22,7 +22,7 @@ body {
   color: var(--brown);
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  padding-top: 70px; /* offset for fixed navbar */
+  padding-top: 70px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -92,7 +92,7 @@ body {
 }
 
 /* ================================
-   CARDS (for dining/events/weather)
+   CARDS
 ================================ */
 .card {
   background-color: var(--white);
@@ -132,200 +132,108 @@ footer {
 }
 
 /* ================================
-   CALENDARS
+   CALENDAR BASE STYLES
 ================================ */
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-  margin-bottom: 30px;
-}
-
-.day {
-  min-height: 100px;
-  padding: 5px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  font-size: 0.9rem;
-}
-
-.day-header {
-  background-color: var(--orange);
-  color: var(--white);
-  text-align: center;
-  font-weight: 700;
-  padding: 5px 0;
-  border-radius: 8px;
-}
-
-/* Calendar specific colors */
-#calendar .day { background-color: #fff3e0; }      /* Dining: light orange */
-#eventsCalendar .day { background-color: #ffe0b2; } /* Events: light tan */
-#weather-box .day { background-color: #B0E0E6; }    /* Weather: light blue */
-
-/* Calendar hover effect */
-.day:hover {
-  transform: translateY(-2px);
-  transition: 0.2s;
-}
-
-/* GENERAL CALENDAR LAYOUT */
-.calendar {
+.calendar,
+.calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  margin-bottom: 2rem;
+  margin: 20px auto;
+  max-width: 1000px;
 }
 
-.day {
-  background-color: #fff;
+.day,
+.calendar-day {
+  background-color: #fff3e0;
   border-radius: 10px;
   padding: 10px;
   min-height: 100px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.day-header {
-  background-color: #5a3e2b;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-}
-
-/* DINING COLORS */
-.dining-calendar .day {
-  background-color: #fff3e0;
-}
-.dining-calendar .day:hover {
-  background-color: #ffe8cc;
-}
-
-/* EVENTS COLORS */
-.events-calendar .day {
-  background-color: #fef6e4;
-}
-.events-calendar .day:hover {
-  background-color: #fde68a;
-}
-
-/* WEATHER COLORS */
-.weather-calendar .day {
-  color: #333;
-  font-weight: 600;
-}
-.weather-calendar .day:hover {
-  transform: scale(1.03);
   transition: 0.2s;
 }
 
-/* CALENDAR GRID SHARED STYLE */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  margin-top: 20px;
+.day:hover,
+.calendar-day:hover {
+  transform: translateY(-2px);
 }
 
-.calendar-header {
-  background-color: #6b4f2f;
-  color: #fff;
+/* Weekday Headers */
+.calendar-header,
+.day-header {
+  text-align: center;
+  font-weight: bold;
   padding: 10px;
   border-radius: 8px;
+  background-color: #fff3e0;
+  color: #6b4f2f;
 }
 
-.calendar-day {
-  background-color: #f4d35e;
-  color: #222;
-  border-radius: 10px;
-  padding: 15px;
-  transition: transform 0.2s;
+/* ================================
+   CALENDAR THEME VARIANTS
+================================ */
+
+/* === Dining Calendar === */
+.dining-calendar .day,
+#dining-calendar .calendar-day {
+  background-color: #fff3e0;
 }
 
-.calendar-day:hover {
-  transform: scale(1.05);
+.dining-calendar .day:hover,
+#dining-calendar .calendar-day:hover {
+  background-color: #ffe8cc;
 }
 
-/* LEGEND */
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: #333;
-  font-weight: bold;
+#dining-calendar .calendar-day h5 {
+  color: #6b4f2f;
 }
 
-.legend-color {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
+/* === Events Calendar === */
+.events-calendar .day,
+#events-calendar .calendar-day {
+  background-color: #fef6e4;
 }
 
-/* D I N I N G   C A L E N D A R  HEADER COLORS */
-#dining-calendar .calendar-header {
-  color: #6b4f2f; /* Warm brown for days of week */
-  font-weight: bold;
+.events-calendar .day:hover,
+#events-calendar .calendar-day:hover {
+  background-color: #fde68a;
 }
 
-/* EVENT CALENDAR COLOR THEMES */
 #events-calendar .calendar-day h5 {
-  font-weight: bold;
   color: #fff;
+  font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* === Weather Calendar === */
+.weather-calendar .day,
+#weather-calendar .calendar-day {
+  background-color: var(--light-blue);
+  color: #333;
+  font-weight: 600;
+}
+
+.weather-calendar .day:hover,
+#weather-calendar .calendar-day:hover {
+  transform: scale(1.03);
 }
 
 #weather-calendar .calendar-day h5 {
   color: #fff;
 }
 
-/* Keep Dining readable */
-#dining-calendar .calendar-day h5 {
-  color: #6b4f2f;
-}
-
-/* === CALENDAR GRID SHARED STYLE === */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  margin: 20px auto;
-  max-width: 1000px;
-}
-
-.calendar-header {
-  text-align: center;
-  font-weight: bold;
-  padding: 10px;
-  background-color: #fff3e0;
-  border-radius: 10px;
-  color: #6b4f2f; /* Brown for dining weekdays */
-}
-
-.calendar-day {
-  background-color: #ffe8cc;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  min-height: 120px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-#events-calendar .calendar-day h5 {
-  color: #fff;
-  font-weight: bold;
-}
-
-/* Legend Items */
+/* ================================
+   LEGEND
+================================ */
 .legend-item {
   display: flex;
   align-items: center;
   gap: 5px;
   font-weight: 600;
+  color: #333;
 }
+
 .legend-color {
   width: 20px;
   height: 20px;

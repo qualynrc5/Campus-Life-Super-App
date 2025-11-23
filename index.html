@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campus Life Super App</title>
 
   <!-- Bootstrap -->
@@ -11,45 +11,41 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <!-- Navbar -->
-   <a class="navbar-brand fw-bold" href="index.html">
-  <img src="images/lourdes_logo.png" alt="Lourdes University Logo" style="height:40px; margin-right:10px;">
-  Campus Life
-</a>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Campus Life</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
-          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-          <li class="nav-item"><a class="nav-link" href="map.html">Campus Map</a></li>
-          <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Navbar loader -->
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.body.insertAdjacentHTML("afterbegin", html);
+        const current = location.pathname.split("/").pop();
+        document.querySelectorAll(".nav-link").forEach(link => {
+          if (link.getAttribute("href") === current || (current === "" && link.getAttribute("href") === "index.html")) {
+            link.classList.add("active");
+          }
+        });
+      });
+  </script>
 
   <!-- Hero Section -->
-<header class="hero-section d-flex flex-column align-items-center justify-content-center">
-  <img src="images/lourdes_logo.png" alt="Lourdes University Logo" style="max-width:350px; margin-bottom:20px;">
-  <h1 class="fw-bold">Welcome to Lourdes University Life!</h1>
-  <p class="lead">Your one-stop app for dining, events, maps, and weather — all in one place.</p>
-  <a href="dining.html" class="btn btn-primary mt-3 px-4 py-2">Explore Now</a>
-</header>
+  <main>
+    <header class="hero-section d-flex flex-column align-items-center justify-content-center">
+      <img src="images/lourdes_logo.png" alt="Lourdes University Logo" style="max-width:350px; margin-bottom:20px;">
+      <h1 class="fw-bold">Welcome to Lourdes University Life!</h1>
+      <p class="lead text-center">Your one-stop app for dining, events, maps, and weather — all in one place.</p>
+      <a href="dining.html" class="btn btn-primary mt-3 px-4 py-2">Explore Now</a>
+    </header>
+  </main>
 
   <!-- Footer -->
   <footer class="text-center py-3 mt-auto">
     <small>&copy; 2025 Lourdes University | Designed for Campus Life</small>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
 
-<!-- ============================= -->

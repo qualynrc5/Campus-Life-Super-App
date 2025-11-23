@@ -1,100 +1,102 @@
-// =============================
+// =========================================================
 // HOMEPAGE GREETING
-// =============================
-const greeting = document.getElementById("greeting");
-if (greeting) {
-  const hours = new Date().getHours();
-  if (hours < 12) greeting.textContent = "Good morning ☀️!";
-  else if (hours < 18) greeting.textContent = "Good afternoon 🌞!";
-  else greeting.textContent = "Good evening 🌙!";
-}
+// =========================================================
+(function setGreeting() {
+  const greeting = document.getElementById("greeting");
+  if (!greeting) return;
 
-// =============================
-// SHARED FUNCTION: CREATE CALENDAR HEADER
-// =============================
-function createWeekdayHeader() {
+  const hours = new Date().getHours();
+  greeting.textContent =
+    hours < 12 ? "Good morning ☀️!" :
+    hours < 18 ? "Good afternoon 🌞!" :
+    "Good evening 🌙!";
+})();
+
+
+// =========================================================
+// UTILITY: CREATE WEEKDAY HEADER ROW
+// =========================================================
+function createWeekdayHeader(parent, className = "calendar-header") {
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const headerRow = document.createElement("div");
-  headerRow.className = "calendar";
   weekdays.forEach(day => {
     const cell = document.createElement("div");
-    cell.className = "day day-header";
+    cell.className = className;
     cell.textContent = day;
-    headerRow.appendChild(cell);
+    parent.appendChild(cell);
   });
-  return headerRow;
 }
 
-// =============================
+
+// =========================================================
+// GENERIC UTILITY: RANDOM ITEM FROM ARRAY
+// =========================================================
+const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+
+
+// =========================================================
 // DINING CALENDAR
-// =============================
-const diningCalendar = document.getElementById("dining-calendar");
-if (diningCalendar) {
+// =========================================================
+(function buildDiningCalendar() {
+  const container = document.getElementById("dining-calendar");
+  if (!container) return;
+
   const breakfastItems = ["Pancakes", "Egg Sandwich", "Omelette Bar", "Bagels", "French Toast", "Breakfast Burrito"];
   const lunchItems = ["Grilled Cheese", "Chicken Alfredo", "Veggie Wrap", "Tacos", "BBQ Chicken", "Pasta Primavera", "Soup & Salad"];
   const daysInMonth = 30;
-  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  // Weekday Headers
-  weekdays.forEach(day => {
-    const header = document.createElement("div");
-    header.className = "calendar-header";
-    header.textContent = day;
-    diningCalendar.appendChild(header);
-  });
+  createWeekdayHeader(container);
 
-  // Calendar Days
   for (let day = 1; day <= daysInMonth; day++) {
-    const breakfast = breakfastItems[Math.floor(Math.random() * breakfastItems.length)];
-    const lunch = lunchItems[Math.floor(Math.random() * lunchItems.length)];
-
     const cell = document.createElement("div");
     cell.className = "calendar-day";
     cell.innerHTML = `
       <h5>Nov ${day}</h5>
-      <p><strong>Breakfast:</strong> ${breakfast}</p>
-      <p><strong>Lunch:</strong> ${lunch}</p>
+      <p><strong>Breakfast:</strong> ${randomItem(breakfastItems)}</p>
+      <p><strong>Lunch:</strong> ${randomItem(lunchItems)}</p>
     `;
-    diningCalendar.appendChild(cell);
+    container.appendChild(cell);
   }
-}
+})();
 
-// =============================
+
+// =========================================================
 // EVENTS CALENDAR
-// =============================
-const eventsCalendar = document.getElementById("events-calendar");
-if (eventsCalendar) {
-  const totalDays = 30;
-  const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+// =========================================================
+(function buildEventsCalendar() {
+  const container = document.getElementById("events-calendar");
+  if (!container) return;
+
+  const daysInMonth = 30;
   const eventTypes = [
     { type: "Academic", color: "#f4a261" },
     { type: "Athletics", color: "#8d6e63" },
     { type: "Community", color: "#f4d35e" }
   ];
 
-  weekdays.forEach(day => {
-    const header = document.createElement("div");
-    header.className = "calendar-header";
-    header.textContent = day;
-    eventsCalendar.appendChild(header);
-  });
+  createWeekdayHeader(container);
 
-  for (let day = 1; day <= totalDays; day++) {
-    const event = eventTypes[Math.floor(Math.random() * eventTypes.length)];
+  for (let day = 1; day <= daysInMonth; day++) {
+    const event = randomItem(eventTypes);
+
     const cell = document.createElement("div");
     cell.className = "calendar-day text-center text-white";
     cell.style.backgroundColor = event.color;
-    cell.innerHTML = `<h5>${day}</h5><p>${event.type}</p>`;
-    eventsCalendar.appendChild(cell);
+    cell.innerHTML = `
+      <h5>${day}</h5>
+      <p>${event.type}</p>
+    `;
+    container.appendChild(cell);
   }
-}
+})();
 
 
-// =============================
-// WEATHER CALENDAR (MATCHES OTHERS NOW)
-// =============================
-const weatherBox = document.getElementById("weather-box");
-if (weatherBox) {
+// =========================================================
+// WEATHER CALENDAR
+// =========================================================
+(function buildWeatherCalendar() {
+  const container = document.getElementById("weather-box");
+  if (!container) return;
+
   const daysInMonth = 30;
   const weatherTypes = [
     { type: "Sunny", icon: "☀️", color: "#f4a261" },
@@ -103,26 +105,29 @@ if (weatherBox) {
     { type: "Snowy", icon: "❄️", color: "#e9c46a" }
   ];
 
-  weatherBox.appendChild(createWeekdayHeader());
+  // Header
+  createWeekdayHeader(container, "day day-header");
 
-  const calendarGrid = document.createElement("div");
-  calendarGrid.className = "calendar weather-calendar";
+  // Grid container
+  const grid = document.createElement("div");
+  grid.className = "calendar weather-calendar";
 
+  // Days
   for (let day = 1; day <= daysInMonth; day++) {
-    const weather = weatherTypes[Math.floor(Math.random() * weatherTypes.length)];
+    const weather = randomItem(weatherTypes);
     const temp = Math.floor(Math.random() * 25) + 40;
+
     const cell = document.createElement("div");
     cell.className = "day";
     cell.style.backgroundColor = weather.color;
     cell.innerHTML = `
-      <div><strong>Nov ${day}</strong></div>
+      <strong>Nov ${day}</strong>
       <div>${weather.icon} ${weather.type}</div>
       <div>${temp}°F</div>
     `;
-    calendarGrid.appendChild(cell);
+
+    grid.appendChild(cell);
   }
 
-  weatherBox.appendChild(calendarGrid);
-}
-
-// =============================
+  container.appendChild(grid);
+})();

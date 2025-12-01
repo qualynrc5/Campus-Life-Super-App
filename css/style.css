@@ -239,3 +239,21 @@ footer {
   height: 20px;
   border-radius: 4px;
 }
+
+/* === Weather Calendar - Festive December === */
+.weather-calendar .calendar-day {
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+/* Hover effect */
+.weather-calendar .calendar-day:hover {
+  transform: scale(1.03);
+}
+
+/* Festive background colors */
+.weather-calendar .calendar-day.red { background-color: #d32f2f; }      /* Christmas red */
+.weather-calendar .calendar-day.green { background-color: #388e3c; }    /* Christmas green */
+.weather-calendar .calendar-day.gold { background-color: #fbc02d; color: #000; } /* Gold for contrast */

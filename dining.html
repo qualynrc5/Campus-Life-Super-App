@@ -13,8 +13,15 @@
 <body>
   <!-- Main content -->
   <main class="container mt-5 pt-5">
-    <h1 class="text-center mb-4">🍳 Dining Hall Calendar - November</h1>
+
+    <h1 class="text-center mb-4 text-success">🍽️ Dining Hall Calendar - December 2026</h1>
+
+    <!-- Legend gets inserted by dining.js -->
+    <div id="dining-legend" class="mb-3"></div>
+
+    <!-- Calendar -->
     <div id="dining-calendar" class="calendar-grid"></div>
+
   </main>
 
   <!-- Footer -->
@@ -22,10 +29,10 @@
     <small>&copy; 2025 Lourdes University | Dining</small>
   </footer>
 
-  <!-- JS -->
-  <script src="js/script.js"></script>
+  <!-- Dining Calendar JS -->
+  <script src="js/dining.js"></script>
 
-  <!-- Navbar loader -->
+  <!-- Navbar Loader -->
   <script>
     fetch("components/navbar.html")
       .then(res => res.text())
